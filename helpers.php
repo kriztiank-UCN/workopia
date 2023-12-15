@@ -22,6 +22,9 @@ function loadView($name, $data = [])
 {
   $viewPath = basePath("views/{$name}.view.php");
 
+  // inspectAndDie($name);
+  // inspect($viewPath);
+
   if (file_exists($viewPath)) {
     // extract($data);
     require $viewPath;
@@ -47,4 +50,30 @@ function loadPartial($name, $data = [])
   } else {
     echo "Partial '{$name} not found!'";
   }
+}
+
+/**
+ * Inspect a value(s)
+ * 
+ * @param mixed $value
+ * @return void
+ */
+function inspect($value)
+{
+  echo '<pre>';
+  var_dump($value);
+  echo '</pre>';
+}
+
+/**
+ * Inspect a value(s) and die
+ * 
+ * @param mixed $value
+ * @return void
+ */
+function inspectAndDie($value)
+{
+  echo '<pre>';
+  die(var_dump($value));
+  echo '</pre>';
 }
