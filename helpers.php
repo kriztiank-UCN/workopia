@@ -20,16 +20,14 @@ function basePath($path = '')
  */
 function loadView($name, $data = [])
 {
+  $viewPath = basePath("views/{$name}.view.php");
 
-  require basePath("views/{$name}.view.php");
-  // $viewPath = basePath("App/views/{$name}.view.php");
-
-  // if (file_exists($viewPath)) {
-  //   extract($data);
-  //   require $viewPath;
-  // } else {
-  //   echo "View '{$name} not found!'";
-  // }
+  if (file_exists($viewPath)) {
+    // extract($data);
+    require $viewPath;
+  } else {
+    echo "View '{$name} not found!'";
+  }
 }
 
 /**
@@ -41,13 +39,12 @@ function loadView($name, $data = [])
  */
 function loadPartial($name, $data = [])
 {
-  require basePath("views/partials/{$name}.php");
-  // $partialPath = basePath("App/views/partials/{$name}.php");
+  $partialPath = basePath("views/partials/{$name}.php");
 
-  // if (file_exists($partialPath)) {
-  //   extract($data);
-  //   require $partialPath;
-  // } else {
-  //   echo "Partial '{$name} not found!'";
-  // }
+  if (file_exists($partialPath)) {
+    // extract($data);
+    require $partialPath;
+  } else {
+    echo "Partial '{$name} not found!'";
+  }
 }
