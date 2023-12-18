@@ -1,5 +1,10 @@
 <?php
 require '../helpers.php';
+require basePath('Database.php');
+$config = require basePath('config/_db.php');
+
+// instantiate the database
+$db = new Database($config);
 
 // require the router class
 require basePath('Router.php');
