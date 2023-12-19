@@ -7,4 +7,7 @@ $listings = $db->query('SELECT * FROM listings LIMIT 6')->fetchAll();
 
 // inspect($listings);
 
-loadView('home');
+// load view and pass in the listings from the database, access them in the view with $listings
+loadView('home', [
+  'listings' => $listings
+]);
