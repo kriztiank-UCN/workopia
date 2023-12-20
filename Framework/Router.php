@@ -100,7 +100,7 @@ class Router
     foreach ($this->routes as $route) {
       // if the uri and method match, load the controller
       if ($route['uri'] === $uri && $route['method'] === $method) {
-        require basePath($route['controller']);
+        require basePath('App/' . $route['controller']);
         return;
       }
     }
