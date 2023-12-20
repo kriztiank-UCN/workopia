@@ -1,0 +1,16 @@
+{
+  "name": "kriztiank/workopia-php",
+  "description": "Job listing application",
+  "authors": [
+    {
+      "name": "Kristian Kristiansen",
+      "email": "kriztiank@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
