@@ -12,8 +12,10 @@ $params = [
 ];
 
 $listing = $db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
-inspect($listing);
+// inspect($listing);
 
 // get the data from the database where that listing id matches the id in the url
 // load view and pass in the listing from the database, access them in the view with $listings
-loadView('listings/show');
+loadView('listings/show', [
+  'listing' => $listing
+]);
