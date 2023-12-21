@@ -1,5 +1,7 @@
 <?php
 
+namespace Framework;
+
 /**
  * Router for the application
  */
