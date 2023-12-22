@@ -2,6 +2,8 @@
 
 namespace Framework;
 
+use App\Controllers\ErrorController;
+
 /**
  * Router for the application
  */
@@ -23,7 +25,7 @@ class Router
     list($controller, $controllerMethod) = explode('@', $action);
     // inspectAndDie($controller);
 
-    $this->routes [] = [
+    $this->routes[] = [
       'method' => $method,
       'uri' => $uri,
       'controller' => $controller,
@@ -84,18 +86,6 @@ class Router
   }
 
   /**
-   * Load error page
-   * @param int $httpCode
-   * @return void
-   */
-  public function error($httpCode = 404)
-  {
-    http_response_code($httpCode);
-    loadView("error/{$httpCode}");
-    exit;
-  }
-
-  /**
    * Route the request
    * 
    * @param string $uri
@@ -118,7 +108,8 @@ class Router
         return;
       }
     }
-
-    $this->error();
+    // Use the Scope Resolution Operator (::) to access the static method
+    // https://www.php.net/manual/en/language.oop5.paamayim-nekudotayim.php
+    ErrorController::notFound();
   }
 }
