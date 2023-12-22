@@ -19,9 +19,14 @@ class HomeController
     $this->db = new Database($config);
   }
 
+   /*
+   * Show the latest listings
+   * 
+   * @return void
+   */
   public function index()
   {
-    $listings = $this->db->query('SELECT * FROM listings LIMIT 2')->fetchAll();
+    $listings = $this->db->query('SELECT * FROM listings ORDER BY created_at DESC LIMIT 2')->fetchAll();
 
     // load view and pass in the listings from the database, access them in the view with $listings
     loadView('home', [
