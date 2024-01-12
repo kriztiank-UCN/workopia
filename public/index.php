@@ -13,12 +13,10 @@ $router = new Router();
 // Get routes
 $routes = require basePath('routes.php');
 
-// Get current URI and HTTP method
+// Get current URI
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'];
 
 // inspect($uri);
-// inspect($method);
 
-// call the route method, pass in the uri & the method of whatever page we are visiting
-$router->route($uri, $method);
+// pass in the uri of whatever page we are visiting
+$router->route($uri);

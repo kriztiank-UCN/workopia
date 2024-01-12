@@ -14,7 +14,7 @@ class ListingController
     $this->db = new Database($config);
   }
 
-   /**
+  /**
    * Show all listings
    * 
    * @return void
@@ -23,12 +23,12 @@ class ListingController
   {
     $listings = $this->db->query('SELECT * FROM listings')->fetchAll();
 
-    loadView('home', [
+    loadView('listings/index', [
       'listings' => $listings
     ]);
   }
 
-   /**
+  /**
    * Show the create listing form
    * 
    * @return void
@@ -38,15 +38,15 @@ class ListingController
     loadView('listings/create');
   }
 
-   /**
+  /**
    * Show a single listing
    * 
    * @param array $params
    * @return void
    */
-  public function show()
+  public function show($params)
   {
-    $id = $_GET['id'] ?? '';
+    $id = $params['id'] ?? '';
     // inspect($id);
 
     $params = [
@@ -56,6 +56,13 @@ class ListingController
 
     $listing = $this->db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
     // inspect($listing);
+
+    // Check if listing exists
+    if (!$listing) {
+      // redirect to 404 page
+      ErrorController::notFound('Listing not found');
+      return;
+    }
 
     // get the data from the database where that listing id matches the id in the url
     // load view and pass in the listing from the database, access them in the view with $listings
